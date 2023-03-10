@@ -1,6 +1,6 @@
 import 'package:floating_animation/utils/app_constant.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' show Random, pi;
+import 'dart:math' show pi;
 
 import '../component/custom_bottom_navigation_bar.dart';
 import '../component/floating_action_icon.dart';

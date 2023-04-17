@@ -12,7 +12,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
       width: double.maxFinite,
       height: 75,
       decoration: BoxDecoration(
-        color: const Color(0xff1f2227),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(18), topRight: Radius.circular(18)),
+        color: Colors.blue,
         boxShadow: [
           BoxShadow(
               color: Colors.white.withOpacity(.2),
@@ -21,23 +23,27 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ],
       ),
       child: Row(
-        children: const [
+        children: [
           CustomBottomNavigationBarItem(
-            title: 'Home',
+            title: 'Ana Sayfa',
             icon: Icons.home,
+            onPressed: () {},
           ),
           CustomBottomNavigationBarItem(
-            title: 'Discover',
-            icon: Icons.explore_outlined,
+            title: 'Hizmetler',
+            icon: Icons.list,
+            onPressed: () {},
           ),
-          Expanded(child: SizedBox.shrink()),
+          const Expanded(child: SizedBox.shrink()),
           CustomBottomNavigationBarItem(
-            title: 'Favourite',
-            icon: Icons.favorite_border,
+            title: 'Mesajlar',
+            icon: Icons.message,
+            onPressed: () {},
           ),
           CustomBottomNavigationBarItem(
-            title: 'Profile',
-            icon: Icons.account_circle_outlined,
+            title: 'Bildirimler',
+            icon: Icons.notifications,
+            onPressed: () {},
           ),
         ],
       ),

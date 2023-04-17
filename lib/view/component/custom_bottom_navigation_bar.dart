@@ -1,45 +1,41 @@
-import 'package:floating_animation/view/component/custom_bottom_navigation_bar_item.dart';
 import 'package:flutter/material.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({
+class CustomBottomNavigationBarItem extends StatelessWidget {
+  const CustomBottomNavigationBarItem({
     super.key,
+    required this.icon,
+    required this.title,
+    required this.onPressed,
   });
+  final IconData icon;
+  final String title;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      height: 75,
-      decoration: BoxDecoration(
-        color: const Color(0xff1f2227),
-        boxShadow: [
-          BoxShadow(
-              color: Colors.white.withOpacity(.2),
-              offset: const Offset(1, 0),
-              blurRadius: 1),
-        ],
-      ),
-      child: Row(
-        children: const [
-          CustomBottomNavigationBarItem(
-            title: 'Home',
-            icon: Icons.home,
-          ),
-          CustomBottomNavigationBarItem(
-            title: 'Discover',
-            icon: Icons.explore_outlined,
-          ),
-          Expanded(child: SizedBox.shrink()),
-          CustomBottomNavigationBarItem(
-            title: 'Favourite',
-            icon: Icons.favorite_border,
-          ),
-          CustomBottomNavigationBarItem(
-            title: 'Profile',
-            icon: Icons.account_circle_outlined,
-          ),
-        ],
+    return Expanded(
+      child: GestureDetector(
+        onTap: onPressed,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 32,
+              color: Colors.black.withOpacity(.8),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(color: Colors.black),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -3,37 +3,38 @@ import 'package:flutter/material.dart';
 
 class FloatingMenuIcon extends StatelessWidget {
   const FloatingMenuIcon({
-    super.key,
+    Key? key,
     required this.rotation,
     required this.backgroundColor,
     required this.icon,
-  });
+    required this.onPressed,
+  }) : super(key: key);
 
   final double rotation;
   final Color backgroundColor;
   final IconData icon;
-
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Transform(
       alignment: Alignment.bottomCenter,
-      transform: Matrix4.identity()
-        ..rotateZ(
-          rotation,
-        ),
+      transform: Matrix4.identity()..rotateZ(rotation),
       child: Container(
         padding: const EdgeInsets.only(bottom: 60),
         child: ClipPath(
           clipper: SubFloatingActionMenu(),
-          child: Container(
-            alignment: Alignment.center,
-            color: backgroundColor,
-            width: 80,
-            height: 80,
-            child: Icon(
-              icon,
-              color: Colors.white,
-              size: 28,
+          child: GestureDetector(
+            onTap: onPressed,
+            child: Container(
+              alignment: Alignment.center,
+              color: backgroundColor,
+              width: 80,
+              height: 80,
+              child: Icon(
+                icon,
+                color: Colors.white,
+                size: 28,
+              ),
             ),
           ),
         ),
